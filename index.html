@@ -7,7 +7,6 @@
   <link rel="icon" href="https://files.catbox.moe/wgjktx.png" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <style>
-    /* === STYLE SAMA SEPERTI SEBELUMNYA === */
     * {
       margin: 0;
       padding: 0;
@@ -179,8 +178,6 @@
   <audio id="bg-audio" autoplay loop>
     <source src="https://files.catbox.moe/ubhpu3.mp3" type="audio/mpeg" />
   </audio>
-
-  <!-- TOMBOL BACKSOUND -->
   <button onclick="toggleAudio()" id="audio-btn">Pause Music</button>
 
   <!-- MASUK SCREEN -->
@@ -209,14 +206,14 @@
     <footer id="kontak">
       <p>&copy; 2025 - 2027 Zerone Official. All rights reserved.</p>
       <div class="social-icons">
-        <a href="https://wa.me/6283840390064" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-        <a href="https://t.me/ZeroneOfficial" target="_blank" title="Telegram"><i class="fab fa-telegram"></i></a>
-        <a href="https://www.youtube.com/@ZeroOffc" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
+        <a href="https://wa.me/6283840390064" target="_blank"><i class="fab fa-whatsapp"></i></a>
+        <a href="https://t.me/ZeroneOfficial" target="_blank"><i class="fab fa-telegram"></i></a>
+        <a href="https://www.youtube.com/@ZeroOffc" target="_blank"><i class="fab fa-youtube"></i></a>
       </div>
     </footer>
   </div>
 
-  <!-- SCRIPT BINTANG, AUDIO, TYPING, DYNAMIC SCRIPT -->
+  <!-- SCRIPT BINTANG, TYPING, DYNAMIC SCRIPT -->
   <script>
     for (let i = 0; i < 100; i++) {
       let star = document.createElement("div");
@@ -233,11 +230,8 @@
     window.addEventListener('load', () => {
       const playPromise = audio.play();
       if (playPromise !== undefined) {
-        playPromise.then(() => {
-          btn.innerText = 'Pause Music';
-        }).catch(() => {
-          btn.innerText = 'Play Music';
-        });
+        playPromise.then(() => btn.innerText = 'Pause Music')
+                   .catch(() => btn.innerText = 'Play Music');
       }
     });
 
@@ -271,34 +265,32 @@
       }
     }
 
+    function showMain() {
+      document.getElementById("masuk-container").style.display = "none";
+      document.getElementById("main-content").style.display = "block";
+      typeWriterMain();
+    }
+
     async function loadScripts() {
-      const res = await fetch('scripts.json'); // Ganti ini jika kamu taruh di GitHub
+      const res = await fetch('scripts.json');
       const data = await res.json();
       const container = document.getElementById('list-script');
 
       data.forEach(script => {
+        const verifLink = `https://t.me/ZeroneBot?start=verif_${script.id}`;
         const card = document.createElement('div');
         card.className = 'script-card';
         card.innerHTML = `
           <img src="${script.image}" alt="${script.title}">
           <h3>${script.title}</h3>
           <p>${script.desc}</p>
-          <a class="download-link" href="${script.link}" target="_blank" 
-             style="display:none;padding:10px 20px;background:#00ff99;color:#000;border-radius:10px;text-decoration:none;font-weight:bold;">
-            Download Script
+          <a href="${verifLink}" target="_blank"
+             style="padding:10px 20px;background:#00ff99;color:#000;border-radius:10px;text-decoration:none;font-weight:bold;display:inline-block;margin-top:10px;">
+            Verifikasi & Download
           </a>
         `;
         container.appendChild(card);
       });
-    }
-
-    function showMain() {
-      document.getElementById("masuk-container").style.display = "none";
-      document.getElementById("main-content").style.display = "block";
-      document.querySelectorAll(".download-link").forEach(link => {
-        link.style.display = "inline-block";
-      });
-      typeWriterMain();
     }
 
     document.addEventListener("DOMContentLoaded", () => {
@@ -307,5 +299,4 @@
     });
   </script>
 </body>
-  </html>
-  
+</html>
