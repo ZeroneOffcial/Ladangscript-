@@ -7,23 +7,21 @@
   <link rel="icon" href="https://files.catbox.moe/wgjktx.png" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <style>
+    /* === STYLE SAMA SEPERTI SEBELUMNYA === */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
       font-family: 'Segoe UI', sans-serif;
     }
-
     html {
       scroll-behavior: smooth;
     }
-
     body {
       background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
       color: white;
       overflow-x: hidden;
     }
-
     #masuk-container {
       position: fixed;
       z-index: 9999;
@@ -36,14 +34,12 @@
       flex-direction: column;
       text-align: center;
     }
-
     #masuk-container img {
       width: 120px;
       border-radius: 50%;
       margin-bottom: 40px;
       box-shadow: 0 0 20px #00ff99;
     }
-
     #masuk-container button {
       padding: 15px 30px;
       font-size: 1.2rem;
@@ -55,56 +51,46 @@
       box-shadow: 0 0 20px #00ff99;
       cursor: pointer;
     }
-
     #main-content {
       display: none;
       animation: fadeIn 1s ease;
     }
-
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(30px); }
       to { opacity: 1; transform: translateY(0); }
     }
-
     nav {
       text-align: center;
       padding: 20px;
       background-color: rgba(255, 255, 255, 0.03);
     }
-
     nav a {
       margin: 0 15px;
       color: #00ff99;
       font-weight: bold;
       text-decoration: none;
     }
-
     nav a:hover {
       color: white;
     }
-
     header {
       text-align: center;
       padding: 50px 20px 20px;
     }
-
     header img {
       width: 100px;
       border-radius: 50%;
       margin-bottom: 15px;
       box-shadow: 0 0 15px #00ff99;
     }
-
     h1 {
       font-size: 2rem;
       margin-bottom: 10px;
     }
-
     p.subtext {
       font-size: 1.2rem;
       color: #ccc;
     }
-
     .script-card {
       background-color: rgba(255, 255, 255, 0.07);
       border-radius: 16px;
@@ -112,11 +98,9 @@
       margin: 20px;
       transition: transform 0.3s ease;
     }
-
     .script-card:hover {
       transform: scale(1.02);
     }
-
     .script-card img {
       width: 100%;
       max-height: 200px;
@@ -124,17 +108,14 @@
       border-radius: 12px;
       margin-bottom: 15px;
     }
-
     .script-card h3 {
       font-size: 1.5rem;
       margin-bottom: 10px;
     }
-
     .script-card p {
       color: #ddd;
       font-size: 1rem;
     }
-
     footer {
       text-align: center;
       padding: 30px 20px;
@@ -142,24 +123,20 @@
       margin-top: 50px;
       border-top: 1px solid #333;
     }
-
     footer p {
       color: #aaa;
       font-size: 0.9rem;
       margin-bottom: 10px;
     }
-
     .social-icons a {
       margin: 0 10px;
       color: #00ff99;
       font-size: 1.5rem;
       transition: color 0.3s;
     }
-
     .social-icons a:hover {
       color: white;
     }
-
     .stars {
       width: 2px;
       height: 2px;
@@ -167,12 +144,10 @@
       position: absolute;
       animation: twinkle 2s infinite ease-in-out alternate;
     }
-
     @keyframes twinkle {
       0% { opacity: 0.2; }
       100% { opacity: 1; }
     }
-
     #audio-btn {
       position: fixed;
       bottom: 20px;
@@ -187,11 +162,9 @@
       cursor: pointer;
       box-shadow: 0 0 10px #00ff99;
     }
-
     audio {
       display: none;
     }
-
     #typing-text, #typing-text-main {
       color: #00ff99;
       font-size: 1.2rem;
@@ -231,19 +204,7 @@
       <p class="subtext">Download script bot gratis anti drama 🌀</p>
     </header>
 
-    <div class="script-card" id="list-script">
-      <img src="https://files.catbox.moe/y43z5k.jpg" alt="Script 1">
-      <h3>Script Nine Assistent</h3>
-      <p>Script bot gratis dengan fitur ratusan bahkan ribuan, cocok buat pushkontak dan jaga group, download now</p>
-      <a id="download-link" href="https://www.mediafire.com/file/xvozeb7b1s5ijk6/SC_NINE_ASSISTANT.zip/file" target="_blank" style="display:none;padding:10px 20px;background:#00ff99;color:#000;border-radius:10px;text-decoration:none;font-weight:bold;">Download Script</a>
-    </div>
-
-        <div class="script-card" id="list-script">
-      <img src="https://o.uguu.se/cKaQlZkx.jpg" alt="Script 1">
-      <h3>Script Nine Assistent</h3>
-      <p>Script bot naze bot dengan fitur-fitur ratusan bahkan ribuan, cocok buat jaga group, download now</p>
-      <a id="download-link" href="https://www.mediafire.com/file/tsovmifw1jkg6n0/hitori-master.zip/file" target="_blank" style="display:none;padding:10px 20px;background:#00ff99;color:#000;border-radius:10px;text-decoration:none;font-weight:bold;">Download Script</a>
-        </div>
+    <div id="list-script"></div>
 
     <footer id="kontak">
       <p>&copy; 2025 - 2027 Zerone Official. All rights reserved.</p>
@@ -255,7 +216,7 @@
     </footer>
   </div>
 
-  <!-- SCRIPT BINTANG, AUDIO, TYPING -->
+  <!-- SCRIPT BINTANG, AUDIO, TYPING, DYNAMIC SCRIPT -->
   <script>
     for (let i = 0; i < 100; i++) {
       let star = document.createElement("div");
@@ -290,13 +251,6 @@
       }
     }
 
-    function showMain() {
-      document.getElementById("masuk-container").style.display = "none";
-      document.getElementById("main-content").style.display = "block";
-      document.getElementById("download-link").style.display = "inline-block";
-      typeWriterMain();
-    }
-
     const text = "Selamat datang di website Zerone Official!";
     let i = 0;
     function typeWriter() {
@@ -317,7 +271,40 @@
       }
     }
 
-    document.addEventListener("DOMContentLoaded", typeWriter);
+    async function loadScripts() {
+      const res = await fetch('scripts.json'); // Ganti ini jika kamu taruh di GitHub
+      const data = await res.json();
+      const container = document.getElementById('list-script');
+
+      data.forEach(script => {
+        const card = document.createElement('div');
+        card.className = 'script-card';
+        card.innerHTML = `
+          <img src="${script.image}" alt="${script.title}">
+          <h3>${script.title}</h3>
+          <p>${script.desc}</p>
+          <a class="download-link" href="${script.link}" target="_blank" 
+             style="display:none;padding:10px 20px;background:#00ff99;color:#000;border-radius:10px;text-decoration:none;font-weight:bold;">
+            Download Script
+          </a>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    function showMain() {
+      document.getElementById("masuk-container").style.display = "none";
+      document.getElementById("main-content").style.display = "block";
+      document.querySelectorAll(".download-link").forEach(link => {
+        link.style.display = "inline-block";
+      });
+      typeWriterMain();
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      typeWriter();
+      loadScripts();
+    });
   </script>
 </body>
   </html>
