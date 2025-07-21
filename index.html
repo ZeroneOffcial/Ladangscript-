@@ -264,7 +264,7 @@
     }
 
     function loadScriptData() {
-      fetch('https://zeroneoffcial.github.io/ladangscript/scripts.json')
+      fetch('./scripts.json')
         .then(res => res.json())
         .then(data => {
           const container = document.getElementById('scriptContainer');
