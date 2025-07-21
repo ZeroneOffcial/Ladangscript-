@@ -7,7 +7,7 @@
   <link rel="icon" href="https://files.catbox.moe/wgjktx.png" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
     body {
       margin: 0;
       font-family: 'Poppins', sans-serif;
@@ -49,9 +49,7 @@
       transition: all 0.3s;
       backdrop-filter: blur(5px);
     }
-    .welcome-screen button:hover,
-    .btn:hover,
-    .masuk-btn:hover {
+    .welcome-screen button:hover {
       background: linear-gradient(90deg, #00ff88, #00d0ff, #a855f7, #00ff88);
       background-size: 400% 400%;
       animation: rainbow 4s linear infinite;
@@ -71,35 +69,25 @@
       border-radius: 12px;
       box-shadow: 0 0 15px #00ff88;
     }
-    header .masuk-btn {
-      background: transparent;
-      border: 2px solid #00ff88;
-      color: #00ff88;
-      padding: 10px 20px;
-      border-radius: 10px;
-      font-weight: bold;
-      text-decoration: none;
-      transition: all 0.3s;
-    }
     .typing {
-      font-size: 20px;
+      font-size: 24px;
+      font-weight: 700;
       text-align: center;
       margin: 20px auto;
       max-width: 90%;
       color: #00ff88;
-      min-height: 24px;
       text-shadow: 0 0 5px #00ff88;
     }
     .container {
       padding: 20px;
-      max-width: 480px;
+      max-width: 600px;
       margin: auto;
     }
     .card {
       background-color: rgba(22,27,34,0.8);
-      padding: 16px;
+      padding: 14px;
       border-radius: 14px;
-      margin-bottom: 20px;
+      margin-bottom: 24px;
       backdrop-filter: blur(4px);
       box-shadow: 0 0 15px #00ff88;
     }
@@ -127,6 +115,13 @@
       cursor: pointer;
       margin-top: 10px;
       transition: all 0.3s;
+    }
+    .btn:hover {
+      background: linear-gradient(90deg, #00ff88, #00d0ff, #a855f7, #00ff88);
+      background-size: 400% 400%;
+      animation: rainbow 4s linear infinite;
+      color: black;
+      border: none;
     }
     .popup {
       display: none;
@@ -156,6 +151,18 @@
     #statusMessage {
       margin-top: 10px;
       color: red;
+    }
+    .social-icons {
+      margin-top: 40px;
+      font-size: 24px;
+    }
+    .social-icons a {
+      margin: 0 10px;
+      color: #00ff88;
+      transition: 0.3s;
+    }
+    .social-icons a:hover {
+      color: #a855f7;
     }
     footer {
       text-align: center;
@@ -191,14 +198,19 @@
   <div id="mainContent" style="display:none;">
     <header>
       <img src="https://files.catbox.moe/8es5ms.jpeg" alt="Zerone Logo">
-      <a href="https://t.me/ZeroneOfficial" class="masuk-btn">Kontak Admin</a>
     </header>
 
     <div class="typing" id="typingText"></div>
     <div class="container" id="scriptContainer">Memuat data...</div>
 
+    <div class="social-icons">
+      <a href="https://wa.me/6283840390064" target="_blank"><i class="fab fa-whatsapp"></i></a>
+      <a href="https://t.me/ZeroneOfficial" target="_blank"><i class="fab fa-telegram"></i></a>
+      <a href="https://www.youtube.com/@ZeroOffc" target="_blank"><i class="fab fa-youtube"></i></a>
+    </div>
+
     <footer>
-      &copy; 2025 Zerone Official • <a href="https://t.me/ZeroneOfficial" style="color:#00ff88;">Hubungi Admin</a>
+      &copy; 2025 Zerone Official
     </footer>
   </div>
 
@@ -216,10 +228,13 @@
   <!-- Script -->
   <script>
     function masuk() {
-      document.getElementById('welcomeScreen').style.display = 'none';
-      document.getElementById('mainContent').style.display = 'block';
-      typeWriter();
-      loadScriptData();
+      document.getElementById('welcomeScreen').style.opacity = '0';
+      setTimeout(() => {
+        document.getElementById('welcomeScreen').style.display = 'none';
+        document.getElementById('mainContent').style.display = 'block';
+        typeWriter();
+        loadScriptData();
+      }, 300);
     }
 
     const typingText = "Selamat Datang di Website Zerone";
@@ -249,7 +264,7 @@
     }
 
     function loadScriptData() {
-      fetch('./scripts.json')
+      fetch('https://zeroneoffcial.github.io/ladangscript/scripts.json')
         .then(res => res.json())
         .then(data => {
           const container = document.getElementById('scriptContainer');
