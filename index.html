@@ -8,18 +8,30 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
     body {
       margin: 0;
       font-family: 'Poppins', sans-serif;
-      background: linear-gradient(to bottom, #111827, #1f2937, #374151);
+      background: linear-gradient(-45deg, #0f2027, #203a43, #2c5364, #1b2735);
+      background-size: 400% 400%;
+      animation: gradientBG 20s ease infinite;
       color: white;
       text-align: center;
       overflow-x: hidden;
     }
+
+    canvas#stars {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      z-index: -1;
+    }
+
     .neon-text {
       color: #00ff88;
       text-shadow: 0 0 5px #00ff88, 0 0 10px #00d0ff, 0 0 20px #a855f7;
     }
+
     .welcome-screen {
       display: flex;
       flex-direction: column;
@@ -28,15 +40,17 @@
       height: 100vh;
       animation: fadeIn 1s ease-in-out;
     }
+
     .welcome-screen img {
       width: 150px;
       height: 150px;
       object-fit: cover;
-      border-radius: 20px;
+      border-radius: 50%;
       margin-bottom: 20px;
       animation: bounce 1s infinite;
       box-shadow: 0 0 25px #00ff88;
     }
+
     .welcome-screen button {
       background: transparent;
       border: 2px solid #00ff88;
@@ -49,6 +63,7 @@
       transition: all 0.3s;
       backdrop-filter: blur(5px);
     }
+
     .welcome-screen button:hover {
       background: linear-gradient(90deg, #00ff88, #00d0ff, #a855f7, #00ff88);
       background-size: 400% 400%;
@@ -56,6 +71,7 @@
       color: black;
       border: none;
     }
+
     header {
       background-color: #111827;
       padding: 20px;
@@ -64,11 +80,13 @@
       align-items: center;
       gap: 10px;
     }
+
     header img {
-      height: 80px;
+      height: 110px;
       border-radius: 16px;
       box-shadow: 0 0 20px #00ff88;
     }
+
     .typing {
       font-size: 24px;
       font-weight: 700;
@@ -78,11 +96,13 @@
       color: #00ff88;
       text-shadow: 0 0 5px #00ff88;
     }
+
     .container {
       padding: 20px;
       max-width: 600px;
       margin: auto;
     }
+
     .card {
       background-color: rgba(22,27,34,0.8);
       padding: 14px;
@@ -91,19 +111,23 @@
       backdrop-filter: blur(4px);
       box-shadow: 0 0 15px #00ff88;
     }
+
     .card img {
       width: 100%;
       border-radius: 12px;
     }
+
     .card h2 {
       margin-top: 12px;
       font-size: 20px;
       color: #00ff88;
     }
+
     .card p {
       font-size: 14px;
       opacity: 0.9;
     }
+
     .btn {
       background-color: transparent;
       color: #00ff88;
@@ -116,6 +140,7 @@
       margin-top: 10px;
       transition: all 0.3s;
     }
+
     .btn:hover {
       background: linear-gradient(90deg, #00ff88, #00d0ff, #a855f7, #00ff88);
       background-size: 400% 400%;
@@ -123,6 +148,7 @@
       color: black;
       border: none;
     }
+
     .popup {
       display: none;
       position: fixed;
@@ -133,6 +159,7 @@
       justify-content: center;
       align-items: center;
     }
+
     .popup-content {
       background: #1e1e1e;
       padding: 20px;
@@ -142,28 +169,34 @@
       max-width: 360px;
       box-shadow: 0 0 15px #00ff88;
     }
+
     .popup-content a {
       display: block;
       margin: 10px 0;
       color: #00ff88;
       text-decoration: underline;
     }
+
     #statusMessage {
       margin-top: 10px;
       color: red;
     }
+
     .social-icons {
       margin-top: 40px;
       font-size: 24px;
     }
+
     .social-icons a {
       margin: 0 10px;
       color: #00ff88;
       transition: 0.3s;
     }
+
     .social-icons a:hover {
       color: #a855f7;
     }
+
     footer {
       text-align: center;
       padding: 20px;
@@ -171,30 +204,38 @@
       opacity: 0.5;
       margin-top: 50px;
     }
+
     @keyframes rainbow {
       0% { background-position: 0% 50%; }
       50% { background-position: 100% 50%; }
       100% { background-position: 0% 50%; }
     }
+
     @keyframes bounce {
       0%, 100% { transform: translateY(0); }
       50% { transform: translateY(-8px); }
     }
+
     @keyframes fadeIn {
       from { opacity: 0; }
       to { opacity: 1; }
     }
+
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
   </style>
 </head>
 <body>
+  <canvas id="stars"></canvas>
 
-  <!-- Welcome Screen -->
   <div class="welcome-screen" id="welcomeScreen">
     <img src="https://files.catbox.moe/8es5ms.jpeg" alt="Zerone Logo">
     <button onclick="masuk()">Masuk ke Website</button>
   </div>
 
-  <!-- Main Content -->
   <div id="mainContent" style="display:none;">
     <header>
       <img src="https://files.catbox.moe/8es5ms.jpeg" alt="Zerone Logo">
@@ -214,7 +255,6 @@
     </footer>
   </div>
 
-  <!-- Popup Verifikasi -->
   <div class="popup" id="popup">
     <div class="popup-content">
       <h3 class="neon-text">Wajib Join & Subscribe Dulu!</h3>
@@ -225,7 +265,6 @@
     </div>
   </div>
 
-  <!-- Script -->
   <script>
     function masuk() {
       document.getElementById('welcomeScreen').style.opacity = '0';
@@ -285,6 +324,53 @@
           console.error(err);
         });
     }
+
+    // Bintang Canvas
+    const canvas = document.getElementById('stars');
+    const ctx = canvas.getContext('2d');
+    let width = window.innerWidth;
+    let height = window.innerHeight;
+    canvas.width = width;
+    canvas.height = height;
+    let stars = [];
+    for (let i = 0; i < 100; i++) {
+      stars.push({
+        x: Math.random() * width,
+        y: Math.random() * height,
+        r: Math.random() * 1.5,
+        d: Math.random() * 50
+      });
+    }
+
+    function drawStars() {
+      ctx.clearRect(0, 0, width, height);
+      ctx.fillStyle = '#fff';
+      for (let i = 0; i < stars.length; i++) {
+        let s = stars[i];
+        ctx.beginPath();
+        ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2, true);
+        ctx.fill();
+      }
+      moveStars();
+    }
+
+    function moveStars() {
+      for (let i = 0; i < stars.length; i++) {
+        stars[i].y += 0.5;
+        if (stars[i].y > height) {
+          stars[i].y = 0;
+          stars[i].x = Math.random() * width;
+        }
+      }
+    }
+
+    setInterval(drawStars, 30);
+    window.onresize = () => {
+      width = window.innerWidth;
+      height = window.innerHeight;
+      canvas.width = width;
+      canvas.height = height;
+    };
   </script>
 </body>
 </html>
