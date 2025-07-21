@@ -5,237 +5,156 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Script Bot Gratis - Zerone</title>
   <link rel="icon" href="https://files.catbox.moe/wgjktx.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
-    body {
+    * {
       margin: 0;
+      padding: 0;
+      box-sizing: border-box;
       font-family: 'Poppins', sans-serif;
-      background-color: #0d1117;
+    }
+
+    body {
+      background: radial-gradient(ellipse at bottom, #0d1a26 0%, #000000 100%);
       color: white;
+      overflow-x: hidden;
+    }
+
+    .logo {
       text-align: center;
+      margin-top: 30px;
     }
-    .welcome-screen {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-    }
-    .welcome-screen img {
+
+    .logo img {
       width: 100px;
       height: 100px;
-      object-fit: cover;
       border-radius: 50%;
-      margin-bottom: 20px;
+      border: 3px solid white;
     }
-    .welcome-screen button {
-      background-color: #00ff88;
-      color: black;
-      padding: 12px 24px;
-      font-size: 16px;
-      font-weight: bold;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
+
+    .title {
+      text-align: center;
+      margin-top: 10px;
+      font-size: 24px;
+      font-weight: 700;
     }
-    header {
-      background-color: #161b22;
-      padding: 20px;
+
+    .script-container {
+      max-width: 800px;
+      margin: 30px auto;
       display: flex;
-      align-items: center;
-      justify-content: space-between;
+      flex-direction: column;
+      gap: 20px;
+      padding: 0 20px;
     }
-    header img {
-      height: 40px;
-      border-radius: 8px;
+
+    .script-box {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 15px;
+      border-radius: 16px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 0 10px rgba(255,255,255,0.1);
+      transition: transform 0.3s ease;
     }
-    header .masuk-btn {
-      background-color: #00ff88;
-      color: black;
-      padding: 8px 14px;
-      font-weight: bold;
-      border-radius: 6px;
-      text-decoration: none;
+
+    .script-box:hover {
+      transform: translateY(-5px);
     }
-    .typing {
-      font-size: 20px;
-      text-align: center;
-      margin: 20px auto;
-      max-width: 90%;
-      color: #00ff88;
-      min-height: 24px;
+
+    .script-title {
+      font-size: 18px;
+      font-weight: 600;
     }
-    .container {
-      padding: 20px;
-      max-width: 480px;
-      margin: auto;
-    }
-    .card {
-      background-color: #161b22;
-      padding: 16px;
-      border-radius: 14px;
-      margin-bottom: 20px;
-    }
-    .card img {
-      width: 100%;
-      border-radius: 12px;
-    }
-    .card h2 {
-      margin-top: 12px;
-      font-size: 20px;
-    }
-    .card p {
+
+    .script-desc {
       font-size: 14px;
-      opacity: 0.9;
+      margin: 5px 0 10px;
     }
-    .btn {
-      background-color: #00ff88;
-      color: black;
-      padding: 10px;
-      text-align: center;
-      border-radius: 8px;
-      font-weight: bold;
+
+    .script-box button {
+      background: linear-gradient(45deg, #ff00cc, #3333ff, #00ffcc);
+      background-size: 200% 200%;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 30px;
+      font-weight: 500;
       cursor: pointer;
-      margin-top: 10px;
+      animation: none;
+      transition: all 0.4s ease;
+      outline: none;
     }
-    .popup {
-      display: none;
+
+    .script-box button:hover {
+      animation: rainbow 2s linear infinite;
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+    }
+
+    @keyframes rainbow {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* Animasi bintang */
+    .stars {
       position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: rgba(0,0,0,0.85);
-      z-index: 1000;
-      justify-content: center;
-      align-items: center;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      background: transparent url('https://media.giphy.com/media/3o7TKMt1VVNkHV2PaE/giphy.gif') repeat top center;
+      opacity: 0.1;
     }
-    .popup-content {
-      background: #1e1e1e;
-      padding: 20px;
-      border-radius: 10px;
-      text-align: center;
-      width: 90%;
-      max-width: 360px;
-    }
-    .popup-content a {
-      display: block;
-      margin: 10px 0;
-      color: #00ff88;
-      text-decoration: underline;
-    }
-    #statusMessage {
-      margin-top: 10px;
-      color: red;
-    }
-    footer {
-      text-align: center;
-      padding: 20px;
-      font-size: 13px;
-      opacity: 0.5;
-      margin-top: 50px;
+
+    audio {
+      display: none;
     }
   </style>
 </head>
 <body>
+  <div class="stars"></div>
+  <audio autoplay loop>
+    <source src="https://files.catbox.moe/ubhpu3.mp3" type="audio/mpeg">
+  </audio>
 
-  <!-- Welcome Screen -->
-  <div class="welcome-screen" id="welcomeScreen">
-    <img src="https://files.catbox.moe/8es5ms.jpeg" alt="Zerone Logo">
-    <button onclick="masuk()">Masuk ke Website</button>
+  <div class="logo">
+    <img src="https://files.catbox.moe/wgjktx.png" alt="Logo Zerone" />
   </div>
+  <div class="title">Script Bot Gratis dari Zerone</div>
 
-  <!-- Main Content -->
-  <div id="mainContent" style="display:none;">
-    <!-- Header -->
-    <header>
-      <img src="https://files.catbox.moe/8es5ms.jpeg" alt="Zerone Logo">
-      <a href="https://t.me/ZeroneOfficial" class="masuk-btn">Kontak Admin</a>
-    </header>
-
-    <!-- Auto Typing -->
-    <div class="typing" id="typingText"></div>
-
-    <!-- Container Script -->
-    <div class="container" id="scriptContainer">Memuat data...</div>
-
-    <!-- Footer -->
-    <footer>
-      &copy; 2025 Zerone Official • <a href="https://t.me/ZeroneOfficial" style="color:#00ff88;">Hubungi Admin</a>
-    </footer>
-  </div>
-
-  <!-- Popup Verifikasi -->
-  <div class="popup" id="popup">
-    <div class="popup-content">
-      <h3>Wajib Join & Subscribe Dulu!</h3>
-      <a href="https://chat.whatsapp.com/Eo62y4vuqrVHYwLlGf5IPY" target="_blank" onclick="localStorage.setItem('joined', true)">📱 Join Grup WhatsApp</a>
-      <a href="https://www.youtube.com/@ZeroOffc" target="_blank" onclick="localStorage.setItem('subscribed', true)">▶️ Subscribe Channel YouTube</a>
-      <button class="btn" onclick="checkVerification()">✅ Saya Sudah Join & Subscribe</button>
-      <div id="statusMessage"></div>
+  <div class="script-container" id="script-list">
+    <div class="script-box">
+      <div class="script-title">Script Nine Assistant</div>
+      <div class="script-desc">Script bot gratis dengan fitur ratusan bahkan ribuan, cocok buat pushkontak dan jaga group, download now</div>
+      <button onclick="window.open('https://www.mediafire.com/file/xvozeb7b1s5ijk6/ScriptNineAssistant.zip')">Download</button>
     </div>
+
+    <!-- Tambahan script akan diload otomatis -->
   </div>
 
-  <!-- Script -->
   <script>
-    // Masuk ke halaman utama
-    function masuk() {
-      document.getElementById('welcomeScreen').style.display = 'none';
-      document.getElementById('mainContent').style.display = 'block';
-      typeWriter();
-      loadScriptData();
-    }
-
-    // Typing Text
-    const typingText = "Selamat Datang di Website Zerone";
-    let i = 0;
-    function typeWriter() {
-      if (i < typingText.length) {
-        document.getElementById("typingText").innerHTML += typingText.charAt(i);
-        i++;
-        setTimeout(typeWriter, 80);
-      }
-    }
-
-    // Popup Verifikasi
-    let selectedLink = null;
-    function showPopup(link) {
-      selectedLink = link;
-      document.getElementById("popup").style.display = "flex";
-    }
-
-    function checkVerification() {
-      const joined = localStorage.getItem("joined");
-      const subscribed = localStorage.getItem("subscribed");
-
-      if (joined && subscribed) {
-        window.location.href = selectedLink;
-      } else {
-        document.getElementById("statusMessage").innerText = "❌ Kamu belum join grup dan subscribe channel kami!";
-      }
-    }
-
-    // Load script dari JSON
-    function loadScriptData() {
-      fetch('./scripts.json')
-        .then(res => res.json())
-        .then(data => {
-          const container = document.getElementById('scriptContainer');
-          container.innerHTML = '';
-          data.forEach(script => {
-            container.innerHTML += `
-              <div class="card">
-                <img src="${script.image}" alt="${script.title}">
-                <h2>${script.title}</h2>
-                <p>${script.desc}</p>
-                <div class="btn" onclick="showPopup('${script.link}')">Download Sekarang</div>
-              </div>
-            `;
-          });
-        })
-        .catch(err => {
-          document.getElementById('scriptContainer').innerText = "❌ Gagal memuat script.";
-          console.error(err);
+    // Load dari scripts.json (jika kamu mau)
+    fetch('https://raw.githubusercontent.com/ZeroneOffcial/ladangscript/main/scripts.json')
+      .then(res => res.json())
+      .then(data => {
+        const list = document.getElementById('script-list');
+        data.forEach(script => {
+          const box = document.createElement('div');
+          box.className = 'script-box';
+          box.innerHTML = `
+            <div class="script-title">${script.title}</div>
+            <div class="script-desc">${script.desc}</div>
+            <button onclick="window.open('${script.link}')">Download</button>
+          `;
+          list.appendChild(box);
         });
-    }
+      })
+      .catch(err => {
+        console.error('Gagal load script:', err);
+      });
   </script>
 </body>
 </html>
