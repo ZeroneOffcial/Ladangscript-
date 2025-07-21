@@ -16,6 +16,10 @@
       text-align: center;
       overflow-x: hidden;
     }
+    .neon-text {
+      color: #00ff88;
+      text-shadow: 0 0 5px #00ff88, 0 0 10px #00d0ff, 0 0 20px #a855f7;
+    }
     .welcome-screen {
       display: flex;
       flex-direction: column;
@@ -31,6 +35,7 @@
       border-radius: 50%;
       margin-bottom: 20px;
       animation: bounce 1s infinite;
+      box-shadow: 0 0 20px #00ff88;
     }
     .welcome-screen button {
       background: transparent;
@@ -44,7 +49,9 @@
       transition: all 0.3s;
       backdrop-filter: blur(5px);
     }
-    .welcome-screen button:hover {
+    .welcome-screen button:hover,
+    .btn:hover,
+    .masuk-btn:hover {
       background: linear-gradient(90deg, #00ff88, #00d0ff, #a855f7, #00ff88);
       background-size: 400% 400%;
       animation: rainbow 4s linear infinite;
@@ -55,20 +62,24 @@
       background-color: #161b22;
       padding: 20px;
       display: flex;
+      flex-direction: column;
       align-items: center;
-      justify-content: space-between;
+      gap: 10px;
     }
     header img {
-      height: 40px;
-      border-radius: 8px;
+      height: 60px;
+      border-radius: 12px;
+      box-shadow: 0 0 15px #00ff88;
     }
     header .masuk-btn {
-      background-color: #00ff88;
-      color: black;
-      padding: 8px 14px;
+      background: transparent;
+      border: 2px solid #00ff88;
+      color: #00ff88;
+      padding: 10px 20px;
+      border-radius: 10px;
       font-weight: bold;
-      border-radius: 6px;
       text-decoration: none;
+      transition: all 0.3s;
     }
     .typing {
       font-size: 20px;
@@ -77,6 +88,7 @@
       max-width: 90%;
       color: #00ff88;
       min-height: 24px;
+      text-shadow: 0 0 5px #00ff88;
     }
     .container {
       padding: 20px;
@@ -89,6 +101,7 @@
       border-radius: 14px;
       margin-bottom: 20px;
       backdrop-filter: blur(4px);
+      box-shadow: 0 0 15px #00ff88;
     }
     .card img {
       width: 100%;
@@ -97,6 +110,7 @@
     .card h2 {
       margin-top: 12px;
       font-size: 20px;
+      color: #00ff88;
     }
     .card p {
       font-size: 14px;
@@ -113,13 +127,6 @@
       cursor: pointer;
       margin-top: 10px;
       transition: all 0.3s;
-    }
-    .btn:hover {
-      background: linear-gradient(90deg, #00ff88, #00d0ff, #a855f7, #00ff88);
-      background-size: 400% 400%;
-      animation: rainbow 4s linear infinite;
-      color: black;
-      border: none;
     }
     .popup {
       display: none;
@@ -138,6 +145,7 @@
       text-align: center;
       width: 90%;
       max-width: 360px;
+      box-shadow: 0 0 15px #00ff88;
     }
     .popup-content a {
       display: block;
@@ -156,7 +164,6 @@
       opacity: 0.5;
       margin-top: 50px;
     }
-
     @keyframes rainbow {
       0% { background-position: 0% 50%; }
       50% { background-position: 100% 50%; }
@@ -198,7 +205,7 @@
   <!-- Popup Verifikasi -->
   <div class="popup" id="popup">
     <div class="popup-content">
-      <h3>Wajib Join & Subscribe Dulu!</h3>
+      <h3 class="neon-text">Wajib Join & Subscribe Dulu!</h3>
       <a href="https://chat.whatsapp.com/Eo62y4vuqrVHYwLlGf5IPY" target="_blank" onclick="localStorage.setItem('joined', true)">📱 Join Grup WhatsApp</a>
       <a href="https://www.youtube.com/@ZeroOffc" target="_blank" onclick="localStorage.setItem('subscribed', true)">▶️ Subscribe Channel YouTube</a>
       <button class="btn" onclick="checkVerification()">✅ Saya Sudah Join & Subscribe</button>
@@ -234,7 +241,6 @@
     function checkVerification() {
       const joined = localStorage.getItem("joined");
       const subscribed = localStorage.getItem("subscribed");
-
       if (joined && subscribed) {
         window.location.href = selectedLink;
       } else {
@@ -267,4 +273,3 @@
   </script>
 </body>
 </html>
-
