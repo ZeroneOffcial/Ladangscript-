@@ -6,11 +6,39 @@
   <title>Script Bot Gratis - Zerone</title>
   <link rel="icon" href="https://files.catbox.moe/wgjktx.png" />
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
     body {
       margin: 0;
       font-family: 'Poppins', sans-serif;
       background-color: #0d1117;
       color: white;
+    }
+    header {
+      background-color: #161b22;
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    header img {
+      height: 40px;
+      border-radius: 8px;
+    }
+    header .masuk-btn {
+      background-color: #00ff88;
+      color: black;
+      padding: 8px 14px;
+      font-weight: bold;
+      border-radius: 6px;
+      text-decoration: none;
+    }
+    .typing {
+      font-size: 20px;
+      text-align: center;
+      margin: 20px auto;
+      max-width: 90%;
+      color: #00ff88;
+      min-height: 24px;
     }
     .container {
       padding: 20px;
@@ -73,9 +101,27 @@
       margin-top: 10px;
       color: red;
     }
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 13px;
+      opacity: 0.5;
+      margin-top: 50px;
+    }
   </style>
 </head>
 <body>
+
+  <!-- Header -->
+  <header>
+    <img src="https://files.catbox.moe/8es5ms.jpeg" alt="Zerone Logo">
+    <a href="https://t.me/ZeroneOfficial" class="masuk-btn">Masuk</a>
+  </header>
+
+  <!-- Auto Typing -->
+  <div class="typing" id="typingText"></div>
+
+  <!-- Container Script -->
   <div class="container" id="scriptContainer">Memuat data...</div>
 
   <!-- Popup Verifikasi -->
@@ -89,9 +135,27 @@
     </div>
   </div>
 
-  <script>
-    let selectedLink = null;
+  <!-- Footer -->
+  <footer>
+    &copy; 2025 Zerone Official • <a href="https://t.me/ZeroneOfficial" style="color:#00ff88;">Kontak Admin</a>
+  </footer>
 
+  <!-- Script -->
+  <script>
+    // Typing Text
+    const typingText = "Selamat Datang di Website Zerone";
+    let i = 0;
+    function typeWriter() {
+      if (i < typingText.length) {
+        document.getElementById("typingText").innerHTML += typingText.charAt(i);
+        i++;
+        setTimeout(typeWriter, 80);
+      }
+    }
+    typeWriter();
+
+    // Popup
+    let selectedLink = null;
     function showPopup(link) {
       selectedLink = link;
       document.getElementById("popup").style.display = "flex";
@@ -108,7 +172,7 @@
       }
     }
 
-    // ✅ Ambil dari public/scripts.json (jangan dari GitHub langsung karena CORS)
+    // Ambil data scripts.json
     fetch('./scripts.json')
       .then(res => res.json())
       .then(data => {
@@ -131,4 +195,5 @@
       });
   </script>
 </body>
-</html>
+    </html>
+    
