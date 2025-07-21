@@ -46,7 +46,6 @@
       margin-top: 10px;
     }
 
-    /* Popup */
     .popup {
       display: none;
       position: fixed;
@@ -110,8 +109,8 @@
       }
     }
 
-    // Load script.json
-    fetch('script.json')
+    // Load script.json dari GitHub langsung
+    fetch('https://raw.githubusercontent.com/ZeroneOffcial/ladangscript/main/scripts.json')
       .then(res => res.json())
       .then(data => {
         const container = document.getElementById('scriptContainer');
@@ -134,3 +133,4 @@
   </script>
 </body>
 </html>
+
