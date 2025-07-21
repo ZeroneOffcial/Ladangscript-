@@ -7,15 +7,8 @@
   <link rel="icon" href="https://files.catbox.moe/wgjktx.png" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Segoe UI', sans-serif;
-    }
-    html {
-      scroll-behavior: smooth;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+    html { scroll-behavior: smooth; }
     body {
       background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
       color: white;
@@ -69,9 +62,7 @@
       font-weight: bold;
       text-decoration: none;
     }
-    nav a:hover {
-      color: white;
-    }
+    nav a:hover { color: white; }
     header {
       text-align: center;
       padding: 50px 20px 20px;
@@ -82,14 +73,8 @@
       margin-bottom: 15px;
       box-shadow: 0 0 15px #00ff99;
     }
-    h1 {
-      font-size: 2rem;
-      margin-bottom: 10px;
-    }
-    p.subtext {
-      font-size: 1.2rem;
-      color: #ccc;
-    }
+    h1 { font-size: 2rem; margin-bottom: 10px; }
+    p.subtext { font-size: 1.2rem; color: #ccc; }
     .script-card {
       background-color: rgba(255, 255, 255, 0.07);
       border-radius: 16px;
@@ -97,9 +82,7 @@
       margin: 20px;
       transition: transform 0.3s ease;
     }
-    .script-card:hover {
-      transform: scale(1.02);
-    }
+    .script-card:hover { transform: scale(1.02); }
     .script-card img {
       width: 100%;
       max-height: 200px;
@@ -107,14 +90,8 @@
       border-radius: 12px;
       margin-bottom: 15px;
     }
-    .script-card h3 {
-      font-size: 1.5rem;
-      margin-bottom: 10px;
-    }
-    .script-card p {
-      color: #ddd;
-      font-size: 1rem;
-    }
+    .script-card h3 { font-size: 1.5rem; margin-bottom: 10px; }
+    .script-card p { color: #ddd; font-size: 1rem; }
     footer {
       text-align: center;
       padding: 30px 20px;
@@ -122,20 +99,14 @@
       margin-top: 50px;
       border-top: 1px solid #333;
     }
-    footer p {
-      color: #aaa;
-      font-size: 0.9rem;
-      margin-bottom: 10px;
-    }
+    footer p { color: #aaa; font-size: 0.9rem; margin-bottom: 10px; }
     .social-icons a {
       margin: 0 10px;
       color: #00ff99;
       font-size: 1.5rem;
       transition: color 0.3s;
     }
-    .social-icons a:hover {
-      color: white;
-    }
+    .social-icons a:hover { color: white; }
     .stars {
       width: 2px;
       height: 2px;
@@ -161,57 +132,61 @@
       cursor: pointer;
       box-shadow: 0 0 10px #00ff99;
     }
-    audio {
-      display: none;
-    }
+    audio { display: none; }
     #typing-text, #typing-text-main {
       color: #00ff99;
       font-size: 1.2rem;
       text-align: center;
       margin-bottom: 30px;
     }
+    .verif-btn {
+      margin: 5px;
+      padding: 10px 15px;
+      background: #00ff99;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+    }
   </style>
 </head>
 <body>
 
-  <!-- BACKGROUND SOUND -->
-  <audio id="bg-audio" autoplay loop>
-    <source src="https://files.catbox.moe/zrtovb.mp4" type="audio/mpeg" />
-  </audio>
-  <button onclick="toggleAudio()" id="audio-btn">Pause Music</button>
+<audio id="bg-audio" autoplay loop>
+  <source src="https://files.catbox.moe/zrtovb.mp4" type="audio/mpeg" />
+</audio>
+<button onclick="toggleAudio()" id="audio-btn">Pause Music</button>
 
-  <!-- MASUK SCREEN -->
-  <div id="masuk-container">
-    <h2 id="typing-text"></h2>
-    <img src="https://files.catbox.moe/8es5ms.jpeg" alt="Logo Zerone" />
-    <button onclick="showMain()">Masuk</button>
-  </div>
+<div id="masuk-container">
+  <h2 id="typing-text"></h2>
+  <img src="https://files.catbox.moe/8es5ms.jpeg" alt="Logo Zerone" />
+  <button onclick="showMain()">Masuk</button>
+</div>
 
-  <!-- KONTEN UTAMA -->
-  <div id="main-content">
-    <nav>
-      <a href="#list-script">List Script</a>
-      <a href="#kontak">Kontak</a>
-    </nav>
+<div id="main-content">
+  <nav>
+    <a href="#list-script">List Script</a>
+    <a href="#kontak">Kontak</a>
+  </nav>
 
-    <header>
-      <h2 id="typing-text-main"></h2>
-      <img src="https://files.catbox.moe/wgjktx.png" alt="Logo Zerone" />
-      <h1>Free Script Bot</h1>
-      <p class="subtext">Download script bot gratis anti drama 🌀</p>
-    </header>
+  <header>
+    <h2 id="typing-text-main"></h2>
+    <img src="https://files.catbox.moe/wgjktx.png" alt="Logo Zerone" />
+    <h1>Free Script Bot</h1>
+    <p class="subtext">Download script bot gratis anti drama 🌀</p>
+  </header>
 
-    <div id="list-script"></div>
+  <div id="list-script"></div>
 
-    <footer id="kontak">
-      <p>&copy; 2025 - 2027 Zerone Official. All rights reserved.</p>
-      <div class="social-icons">
-        <a href="https://wa.me/6283840390064" target="_blank"><i class="fab fa-whatsapp"></i></a>
-        <a href="https://t.me/ZeroneOfficial" target="_blank"><i class="fab fa-telegram"></i></a>
-        <a href="https://www.youtube.com/@ZeroOffc" target="_blank"><i class="fab fa-youtube"></i></a>
-      </div>
-    </footer>
-  </div>
+  <footer id="kontak">
+    <p>&copy; 2025 - 2027 Zerone Official. All rights reserved.</p>
+    <div class="social-icons">
+      <a href="https://wa.me/6283840390064" target="_blank"><i class="fab fa-whatsapp"></i></a>
+      <a href="https://t.me/ZeroneOfficial" target="_blank"><i class="fab fa-telegram"></i></a>
+      <a href="https://www.youtube.com/@ZeroOffc" target="_blank"><i class="fab fa-youtube"></i></a>
+    </div>
+  </footer>
+</div>
 
 <script>
   for (let i = 0; i < 100; i++) {
@@ -270,7 +245,6 @@
     typeWriterMain();
   }
 
-  // ✅ UPDATE BAGIAN INI (tanpa verifikasi, langsung download)
   async function loadScripts() {
     const res = await fetch('scripts.json');
     const data = await res.json();
@@ -283,13 +257,50 @@
         <img src="${script.image}" alt="${script.title}">
         <h3>${script.title}</h3>
         <p>${script.desc}</p>
-        <a href="${script.link}" target="_blank"
-           style="padding:10px 20px;background:#00ff99;color:#000;border-radius:10px;text-decoration:none;font-weight:bold;display:inline-block;margin-top:10px;">
+
+        <div class="verif-buttons">
+          <button onclick="joinGrup(this)" class="verif-btn">✅ Join Grup</button>
+          <button onclick="subscribeYT(this)" class="verif-btn">✅ Subscribe YT</button>
+        </div>
+
+        <a href="${script.link}" target="_blank" class="download-btn" 
+           style="display:none;padding:10px 20px;background:#00ff99;color:#000;border-radius:10px;text-decoration:none;font-weight:bold;display:inline-block;margin-top:10px;">
           Download Sekarang
         </a>
       `;
       container.appendChild(card);
+
+      // Auto tampilkan tombol download jika sudah verif
+      const isJoined = localStorage.getItem('joinedGrup') === 'true';
+      const isSubscribed = localStorage.getItem('subscribedYT') === 'true';
+      if (isJoined && isSubscribed) {
+        card.querySelector('.download-btn').style.display = 'inline-block';
+        card.querySelectorAll('.verif-btn').forEach(btn => btn.style.display = 'none');
+      }
     });
+  }
+
+  function joinGrup(btn) {
+    window.open('https://chat.whatsapp.com/Eo62y4vuqrVHYwLlGf5IPY', '_blank');
+    localStorage.setItem('joinedGrup', 'true');
+    checkVerif(btn);
+  }
+
+  function subscribeYT(btn) {
+    window.open('https://www.youtube.com/@ZeroOffc', '_blank');
+    localStorage.setItem('subscribedYT', 'true');
+    checkVerif(btn);
+  }
+
+  function checkVerif(btn) {
+    const card = btn.closest('.script-card');
+    const isJoined = localStorage.getItem('joinedGrup') === 'true';
+    const isSubscribed = localStorage.getItem('subscribedYT') === 'true';
+
+    if (isJoined && isSubscribed) {
+      card.querySelector('.download-btn').style.display = 'inline-block';
+      card.querySelectorAll('.verif-btn').forEach(b => b.style.display = 'none');
+    }
   }
 
   document.addEventListener("DOMContentLoaded", () => {
@@ -298,4 +309,5 @@
   });
 </script>
 </body>
-</html>
+      </html>
+                                                                    
