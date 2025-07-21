@@ -12,6 +12,31 @@
       font-family: 'Poppins', sans-serif;
       background-color: #0d1117;
       color: white;
+      text-align: center;
+    }
+    .welcome-screen {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+    .welcome-screen img {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 50%;
+      margin-bottom: 20px;
+    }
+    .welcome-screen button {
+      background-color: #00ff88;
+      color: black;
+      padding: 12px 24px;
+      font-size: 16px;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
     }
     header {
       background-color: #161b22;
@@ -112,17 +137,31 @@
 </head>
 <body>
 
-  <!-- Header -->
-  <header>
+  <!-- Welcome Screen -->
+  <div class="welcome-screen" id="welcomeScreen">
     <img src="https://files.catbox.moe/8es5ms.jpeg" alt="Zerone Logo">
-    <a href="https://t.me/ZeroneOfficial" class="masuk-btn">Masuk</a>
-  </header>
+    <button onclick="masuk()">Masuk ke Website</button>
+  </div>
 
-  <!-- Auto Typing -->
-  <div class="typing" id="typingText"></div>
+  <!-- Main Content -->
+  <div id="mainContent" style="display:none;">
+    <!-- Header -->
+    <header>
+      <img src="https://files.catbox.moe/8es5ms.jpeg" alt="Zerone Logo">
+      <a href="https://t.me/ZeroneOfficial" class="masuk-btn">Kontak Admin</a>
+    </header>
 
-  <!-- Container Script -->
-  <div class="container" id="scriptContainer">Memuat data...</div>
+    <!-- Auto Typing -->
+    <div class="typing" id="typingText"></div>
+
+    <!-- Container Script -->
+    <div class="container" id="scriptContainer">Memuat data...</div>
+
+    <!-- Footer -->
+    <footer>
+      &copy; 2025 Zerone Official • <a href="https://t.me/ZeroneOfficial" style="color:#00ff88;">Hubungi Admin</a>
+    </footer>
+  </div>
 
   <!-- Popup Verifikasi -->
   <div class="popup" id="popup">
@@ -135,13 +174,16 @@
     </div>
   </div>
 
-  <!-- Footer -->
-  <footer>
-    &copy; 2025 Zerone Official • <a href="https://t.me/ZeroneOfficial" style="color:#00ff88;">Kontak Admin</a>
-  </footer>
-
   <!-- Script -->
   <script>
+    // Masuk ke halaman utama
+    function masuk() {
+      document.getElementById('welcomeScreen').style.display = 'none';
+      document.getElementById('mainContent').style.display = 'block';
+      typeWriter();
+      loadScriptData();
+    }
+
     // Typing Text
     const typingText = "Selamat Datang di Website Zerone";
     let i = 0;
@@ -152,9 +194,8 @@
         setTimeout(typeWriter, 80);
       }
     }
-    typeWriter();
 
-    // Popup
+    // Popup Verifikasi
     let selectedLink = null;
     function showPopup(link) {
       selectedLink = link;
@@ -172,28 +213,29 @@
       }
     }
 
-    // Ambil data scripts.json
-    fetch('./scripts.json')
-      .then(res => res.json())
-      .then(data => {
-        const container = document.getElementById('scriptContainer');
-        container.innerHTML = '';
-        data.forEach(script => {
-          container.innerHTML += `
-            <div class="card">
-              <img src="${script.image}" alt="${script.title}">
-              <h2>${script.title}</h2>
-              <p>${script.desc}</p>
-              <div class="btn" onclick="showPopup('${script.link}')">Download Sekarang</div>
-            </div>
-          `;
+    // Load script dari JSON
+    function loadScriptData() {
+      fetch('./scripts.json')
+        .then(res => res.json())
+        .then(data => {
+          const container = document.getElementById('scriptContainer');
+          container.innerHTML = '';
+          data.forEach(script => {
+            container.innerHTML += `
+              <div class="card">
+                <img src="${script.image}" alt="${script.title}">
+                <h2>${script.title}</h2>
+                <p>${script.desc}</p>
+                <div class="btn" onclick="showPopup('${script.link}')">Download Sekarang</div>
+              </div>
+            `;
+          });
+        })
+        .catch(err => {
+          document.getElementById('scriptContainer').innerText = "❌ Gagal memuat script.";
+          console.error(err);
         });
-      })
-      .catch(err => {
-        document.getElementById('scriptContainer').innerText = "❌ Gagal memuat script.";
-        console.error(err);
-      });
+    }
   </script>
 </body>
-    </html>
-    
+</html>
