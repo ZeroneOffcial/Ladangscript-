@@ -258,19 +258,20 @@
         <h3>${script.title}</h3>
         <p>${script.desc}</p>
 
-        <div class="verif-buttons">
-          <button onclick="joinGrup(this)" class="verif-btn">✅ Join Grup</button>
-          <button onclick="subscribeYT(this)" class="verif-btn">✅ Subscribe YT</button>
-        </div>
+        <button onclick="manualVerif(this)" class="verif-btn">✅ Saya sudah join & subscribe</button>
 
         <a href="${script.link}" target="_blank" class="download-btn" 
-           style="display:none;padding:10px 20px;background:#00ff99;color:#000;border-radius:10px;text-decoration:none;font-weight:bold;display:inline-block;margin-top:10px;">
+          style="display:none;padding:10px 20px;background:#00ff99;color:#000;border-radius:10px;text-decoration:none;font-weight:bold;display:inline-block;margin-top:10px;">
           Download Sekarang
         </a>
+
+        <p style="margin-top:10px;">
+          <a href="https://chat.whatsapp.com/Eo62y4vuqrVHYwLlGf5IPY" target="_blank" style="color:#00ff99;">📱 Join Grup WhatsApp</a><br/>
+          <a href="https://www.youtube.com/@ZeroOffc" target="_blank" style="color:#00ff99;">▶️ Subscribe Channel YouTube</a>
+        </p>
       `;
       container.appendChild(card);
 
-      // Auto tampilkan tombol download jika sudah verif
       const isJoined = localStorage.getItem('joinedGrup') === 'true';
       const isSubscribed = localStorage.getItem('subscribedYT') === 'true';
       if (isJoined && isSubscribed) {
@@ -280,26 +281,16 @@
     });
   }
 
-  function joinGrup(btn) {
-    window.open('https://chat.whatsapp.com/Eo62y4vuqrVHYwLlGf5IPY', '_blank');
-    localStorage.setItem('joinedGrup', 'true');
-    checkVerif(btn);
-  }
-
-  function subscribeYT(btn) {
-    window.open('https://www.youtube.com/@ZeroOffc', '_blank');
-    localStorage.setItem('subscribedYT', 'true');
-    checkVerif(btn);
-  }
-
-  function checkVerif(btn) {
+  function manualVerif(btn) {
     const card = btn.closest('.script-card');
-    const isJoined = localStorage.getItem('joinedGrup') === 'true';
-    const isSubscribed = localStorage.getItem('subscribedYT') === 'true';
-
-    if (isJoined && isSubscribed) {
+    const confirmVerif = confirm("Kamu yakin sudah join grup WhatsApp dan subscribe channel YouTube?");
+    if (confirmVerif) {
+      localStorage.setItem('joinedGrup', 'true');
+      localStorage.setItem('subscribedYT', 'true');
       card.querySelector('.download-btn').style.display = 'inline-block';
       card.querySelectorAll('.verif-btn').forEach(b => b.style.display = 'none');
+    } else {
+      alert("Yuk join dan subscribe dulu yaa~ 🤗");
     }
   }
 
@@ -309,5 +300,4 @@
   });
 </script>
 </body>
-      </html>
-                                                                    
+</html>
