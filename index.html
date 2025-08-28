@@ -12,9 +12,7 @@
     body {
       margin: 0;
       font-family: 'Poppins', sans-serif;
-      background: linear-gradient(-45deg, #6a11cb, #2575fc, #00d4ff, #6a11cb);
-      background-size: 400% 400%;
-      animation: gradientBG 18s ease infinite;
+      background: radial-gradient(circle at top left, #1e0033, #0a0f1f 70%);
       color: white;
       text-align: center;
       overflow-x: hidden;
@@ -40,59 +38,55 @@
       z-index: 9999;
       transition: opacity 0.5s ease;
     }
-
     .spinner {
       border: 6px solid #222;
-      border-top: 6px solid #00ffea;
+      border-top: 6px solid #ff00ff;
       border-radius: 50%;
-      width: 60px;
-      height: 60px;
+      width: 60px; height: 60px;
       animation: spin 1s linear infinite;
       margin-bottom: 15px;
     }
-
     @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
     .neon-text {
-      color: #00ffea;
-      text-shadow: 0 0 5px #00ffea, 0 0 10px #00d0ff, 0 0 20px #a855f7;
+      color: #ff00ff;
+      text-shadow: 0 0 5px #ff00ff, 0 0 10px #a855f7, 0 0 20px #00d4ff;
     }
 
     .typing {
       font-size: 24px;
       font-weight: 700;
-      text-align: center;
       margin: 20px auto;
       max-width: 90%;
-      color: #00ffea;
-      text-shadow: 0 0 5px #00ffea;
+      color: #ff00ff;
+      text-shadow: 0 0 5px #ff00ff;
       min-height: 40px;
     }
 
     .container { padding: 20px; max-width: 700px; margin: auto; }
 
-    /* Card */
+    /* Card Script */
     .card {
-      background-color: #1c1f26;
-      padding: 12px;
-      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      padding: 14px;
+      border-radius: 16px;
       margin-bottom: 20px;
-      box-shadow: 0 0 15px rgba(0, 255, 234, 0.3);
+      box-shadow: 0 0 25px rgba(168, 85, 247, 0.3);
       opacity: 0;
       transform: translateY(40px);
       transition: all 0.8s ease;
     }
-
     .card.show { opacity: 1; transform: translateY(0); }
-    .card:hover { box-shadow: 0 0 25px rgba(0, 255, 234, 0.6); transform: translateY(-6px); }
+    .card:hover { box-shadow: 0 0 35px rgba(255, 0, 255, 0.6); transform: translateY(-6px); }
     .card img { width: 100%; border-radius: 12px; height: auto; }
-    .card h2 { margin-top: 10px; font-size: 18px; color: #00ffea; }
+    .card h2 { margin-top: 10px; font-size: 18px; color: #ff00ff; }
     .card p { font-size: 13px; opacity: 0.9; }
 
     .btn {
-      background-color: transparent;
-      color: #00ffea;
-      border: 2px solid #00ffea;
+      background: transparent;
+      color: #ff00ff;
+      border: 2px solid #ff00ff;
       padding: 8px;
       text-align: center;
       border-radius: 8px;
@@ -101,11 +95,8 @@
       margin-top: 8px;
       transition: all 0.3s;
     }
-
     .btn:hover {
-      background: linear-gradient(90deg, #00ffea, #00d0ff, #a855f7, #00ffea);
-      background-size: 400% 400%;
-      animation: rainbow 4s linear infinite;
+      background: linear-gradient(90deg, #ff00ff, #a855f7, #00d4ff);
       color: black;
       border: none;
     }
@@ -121,34 +112,33 @@
       justify-content: center;
       align-items: center;
     }
-
     .popup-content {
-      background: #1e1e1e;
+      background: rgba(30,30,30,0.9);
+      backdrop-filter: blur(12px);
       padding: 20px;
-      border-radius: 10px;
+      border-radius: 12px;
       text-align: center;
       width: 90%;
       max-width: 380px;
-      box-shadow: 0 0 15px #00ffea;
+      box-shadow: 0 0 15px #ff00ff;
     }
 
     .verify-card {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      background: #1c1f26;
+      background: rgba(255,255,255,0.05);
+      backdrop-filter: blur(6px);
       padding: 10px 15px;
-      border-radius: 8px;
+      border-radius: 10px;
       margin: 8px 0;
       cursor: pointer;
-      border: 1px solid #00ffea;
+      border: 1px solid #ff00ff;
       transition: all 0.3s;
     }
-
     .verify-card i { font-size: 20px; }
     .verify-card span { flex: 1; margin-left: 10px; text-align: left; }
     .verify-card .status-icon { color: transparent; font-size: 18px; transition: 0.3s; }
-
     .verify-card.done {
       background: #0f3d2e;
       border: 1px solid #00ff88;
@@ -159,21 +149,10 @@
     #statusMessage { margin-top: 10px; color: red; }
 
     .social-icons { margin-top: 40px; font-size: 24px; }
-    .social-icons a { margin: 0 10px; color: #00ffea; transition: 0.3s; }
-    .social-icons a:hover { color: #a855f7; }
+    .social-icons a { margin: 0 10px; color: #ff00ff; transition: 0.3s; }
+    .social-icons a:hover { color: #00d4ff; }
 
     footer { text-align: center; padding: 20px; font-size: 13px; opacity: 0.5; margin-top: 50px; }
-
-    @keyframes rainbow {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-    @keyframes gradientBG {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
   </style>
 </head>
 <body>
@@ -195,7 +174,6 @@
       <a href="https://t.me/ZeroneOfficial" target="_blank"><i class="fab fa-telegram"></i></a>
       <a href="https://www.youtube.com/@ZeroOffc" target="_blank"><i class="fab fa-youtube"></i></a>
     </div>
-
     <footer>&copy; 2025 Zerone Official</footer>
   </div>
 
@@ -240,7 +218,7 @@
     }, 1200);
   });
 
-  // Typing Effect Loop
+  // Typing
   const texts = ["Selamat Datang di Website Zerone", "Gratis Script Bot Keren!", "Jangan Lupa Join & Subscribe ❤️"];
   let tIndex = 0, charIndex = 0, typingSpeed = 80;
   let typingElement = document.getElementById("typingText");
@@ -259,54 +237,31 @@
   }
   function startTyping() { typeWriter(); }
 
-  // Popup logic
+  // Verifikasi
+  let verifyStatus = { waGroup:false, waChannel:false, tgChannel:false, tgGroup:false, ytSub:false };
   let selectedLink = null;
+
   function showPopup(link) {
     selectedLink = link;
     document.getElementById("popup").style.display = "flex";
   }
-
   function markDone(id) {
-    localStorage.setItem(id, true);
-    const card = document.querySelector(`.verify-card[data-id="${id}"]`);
-    card.classList.add("done");
-    // open links
+    verifyStatus[id] = true;
+    document.querySelector(`.verify-card[data-id="${id}"]`).classList.add("done");
     if(id==="waGroup") window.open("https://chat.whatsapp.com/CEoqekcix8gDTrCJPZJGub","_blank");
     if(id==="waChannel") window.open("https://whatsapp.com/channel/0029VbB32Eb2UPBPGnOVAr1s","_blank");
     if(id==="tgChannel") window.open("https://t.me/channelszerone","_blank");
     if(id==="tgGroup") window.open("https://t.me/publikchangli","_blank");
     if(id==="ytSub") window.open("https://www.youtube.com/@ZeroOffc","_blank");
-    updateVerifyBtn();
   }
-
-  function restoreVerifyStatus() {
-    ["waGroup","waChannel","tgChannel","tgGroup","ytSub"].forEach(id=>{
-      if(localStorage.getItem(id)) {
-        document.querySelector(`.verify-card[data-id="${id}"]`).classList.add("done");
-      }
-    });
-    updateVerifyBtn();
-  }
-
-  function updateVerifyBtn(){
-    const allDone=["waGroup","waChannel","tgChannel","tgGroup","ytSub"].every(id=>localStorage.getItem(id));
-    const btn=document.getElementById("verifyBtn");
-    if(allDone){
-      btn.style.background="#00ff88";btn.style.color="#000";btn.innerText="✅ Semua Selesai, Download!";
-    } else {
-      btn.style.background="transparent";btn.style.color="#00ffea";btn.innerText="✅ Saya Sudah Join & Subscribe";
-    }
-  }
-
   function checkVerification() {
-    const allDone=["waGroup","waChannel","tgChannel","tgGroup","ytSub"].every(id=>localStorage.getItem(id));
-    if(allDone) window.location.href = selectedLink;
-    else document.getElementById("statusMessage").innerText = "❌ Masih ada yang belum join/subscribe!";
+    const allDone = Object.values(verifyStatus).every(v=>v===true);
+    const statusMessage = document.getElementById("statusMessage");
+    if(allDone){ statusMessage.innerHTML="✅ Semua Selesai, Download!"; statusMessage.style.color="#00ff88"; window.location.href = selectedLink; }
+    else { statusMessage.innerHTML="❌ Kamu belum sepenuhnya terverifikasi!"; statusMessage.style.color="red"; }
   }
 
-  window.addEventListener("DOMContentLoaded", restoreVerifyStatus);
-
-  // Load Scripts
+  // Load Script Cards
   function loadScriptData() {
     fetch('./scripts.json')
       .then(res => res.json())
@@ -342,11 +297,11 @@
   let width = window.innerWidth, height = window.innerHeight;
   canvas.width = width; canvas.height = height;
   let stars = [];
-  for (let i=0;i<100;i++){ stars.push({x:Math.random()*width,y:Math.random()*height,r:Math.random()*1.5}); }
+  for (let i=0;i<120;i++){ stars.push({x:Math.random()*width,y:Math.random()*height,r:Math.random()*1.5}); }
   function drawStars() {
     ctx.clearRect(0,0,width,height);
     ctx.fillStyle='#fff';
-    stars.forEach(s=>{ctx.beginPath();ctx.arc(s.x,s.y,s.r,0,Math.PI*2);ctx.fill();s.y+=0.5;if(s.y>height){s.y=0;s.x=Math.random()*width;}});
+    stars.forEach(s=>{ctx.beginPath();ctx.arc(s.x,s.y,s.r,0,Math.PI*2);ctx.fill();s.y+=0.4;if(s.y>height){s.y=0;s.x=Math.random()*width;}});
   }
   setInterval(drawStars,30);
   window.onresize=()=>{width=window.innerWidth;height=window.innerHeight;canvas.width=width;canvas.height=height;};
